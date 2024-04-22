@@ -15,6 +15,7 @@
 //    db.js : Base de datos
 //    config.js : Nos va a servir para crear configuraciones que el resto de archivos va a pdoer importar.
 //    index.js : Aplicacion de arranque.
+      ./models/user.model.js : Sirve para especificarle a MongoDB los datos que estaremos guardando, su forma.
 
 
 { Anotaciones Importantes }
@@ -27,12 +28,17 @@
   Instalar nodemon para no estar apagando y prendiendo el servidor entre modificaciones.
 
   Para configurar el comando de incicio agregar ( "dev" : "nodemon src/index.js" ) al package.json
+  Para iniciar iniciar la aplicacion escribir 'npm run dev'.
 
 { morgan }
   Sirve para ver las peticiones que van llegando al BackEnd en la consola.
 
+{ mongoose }
+  Nos sirve para conectarnos a la base de datos MongoDB y tambien modelar los datos.
 
-
+{ dotenv } 
+  Sirve para importar variables de entorno de un archivo .env ahi puse los datos de MongoDB
+  Este modulo no lo utilizan en el video pero como uso MongoDB Atlas lo necesito.
 
 
 
