@@ -16,11 +16,15 @@
 //    config.js : Nos va a servir para crear configuraciones que el resto de archivos va a pdoer importar.
 //    index.js : Aplicacion de arranque.
       ./models/user.model.js : Sirve para especificarle a MongoDB los datos que estaremos guardando, su forma.
+      ./routes/auth.routes.js : Sirve para englobar todas las rutas relacionadas con la autentificación.
+      ./controllers/auth.controller.js : va a estar relacionado con ./routes/auth.routes.js
 
 
 { Anotaciones Importantes }
   1. Al momento de importar archivos que creamos debemos ponerle la extension. Ej(.js). 
     Si estamos importando modulos de tercernos no hace falta ponerle la extension. 
+  2.Para no mezclar las rutas del Frontend y del Backend, /api a las rutas del Backend 
+    en app.js.
   
 
             // MODULOS // 
