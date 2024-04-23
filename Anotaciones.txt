@@ -18,6 +18,7 @@
       ./models/user.model.js : Sirve para especificarle a MongoDB los datos que estaremos guardando, su forma.
       ./routes/auth.routes.js : Sirve para englobar todas las rutas relacionadas con la autentificación.
       ./controllers/auth.controller.js : va a estar relacionado con ./routes/auth.routes.js
+      ./libs/jwt.js : Crea un JSON Web Token
 
 
 { Anotaciones Importantes }
@@ -44,9 +45,12 @@
   Sirve para importar variables de entorno de un archivo .env ahi puse los datos de MongoDB
   Este modulo no lo utilizan en el video pero como uso MongoDB Atlas lo necesito.
 
+{ bcryptjs }
+  Sirve para encriptar las contraseñas 
 
-
-
+{ jsonWebToken }
+  Sirve para crear un token de sesion asi por ejemplo cuando nos logueemos y reiniciemos 
+  la pagina estermos todavia conectados.
 
 
 
