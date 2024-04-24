@@ -45,7 +45,7 @@ export const register = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const login = async (req, res) => {
   // Extraer datos relevantes
@@ -83,7 +83,7 @@ export const login = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 export const logout = (req, res) => {
   // Eliminar el token de las cookies
@@ -91,4 +91,21 @@ export const logout = (req, res) => {
     expires: new Date(0)
   });
   return res.sendStatus(200);
-}
+};
+
+export const profile = async (req, res) => {
+  // Encontrar un usuario por su id
+  const userFound = await User.findById(req.user.id);
+
+  // Si no se encuentra el usuario lanzar un mensaje de error
+  if(!userFound) return res.status(400).json({ message: 'User not found' });
+
+  // Si el usuario es encontrado retornar lo siguiente:
+  return res.json({
+    id: userFound._id,
+    username: userFound.username,
+    email: userFound.email,
+    createdAt: userFound.createdAt,
+    updatedAt: userFound.updatedAt,
+  });
+};

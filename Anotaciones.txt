@@ -19,13 +19,15 @@
       ./routes/auth.routes.js : Sirve para englobar todas las rutas relacionadas con la autentificación.
       ./controllers/auth.controller.js : va a estar relacionado con ./routes/auth.routes.js
       ./libs/jwt.js : Crea un JSON Web Token
+      ./middlewares/validateToken.js : funcion para validar si el usuario ya se autentifico o si puso su correo y su contraseña
 
 
 { Anotaciones Importantes }
   1. Al momento de importar archivos que creamos debemos ponerle la extension. Ej(.js). 
     Si estamos importando modulos de tercernos no hace falta ponerle la extension. 
-  2.Para no mezclar las rutas del Frontend y del Backend, /api a las rutas del Backend 
+  2. Para no mezclar las rutas del Frontend y del Backend, /api a las rutas del Backend 
     en app.js.
+  3. Los middlewares son funciones que se ejecutan antes de llegar a una ruta.
   
 
             // MODULOS // 
@@ -52,6 +54,8 @@
   Sirve para crear un token de sesion asi por ejemplo cuando nos logueemos y reiniciemos 
   la pagina estermos todavia conectados.
 
+{ cookie-parser }
+  Nos permite añadir un middleware que convierte una cookie en un objeto JSON.
 
 
 
