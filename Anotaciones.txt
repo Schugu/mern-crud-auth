@@ -66,11 +66,23 @@
 { zod }
   Nos permite validar datos comparandolos con un esquema.
 
+{ cors }
+  Nos permite configurar cors facilmente.
 
 ------------FrontEnd
+// Anotaciones Importantes
+  1. Para que no salga el error de cors se debe instalar un modulo en el BackEnd
+
+// modulos
+{ react-router-dom' }
+  Sirve para crear y gestionar las rutas. 
+
+{ react-hook-form } 
+  Sirve para validar los datos de un formulario y para manejar el cambio de estado.
+
+{ axios }
+  Biblioteca que utiliza fetch.
 
 
-
-
-
-
+// Archivos
+  ./src/api/auth.js : sirve para hacer peticiones al BackEnd.

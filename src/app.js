@@ -16,8 +16,8 @@ import authRoutes from './routes/auth.routes.js';
 // Importar task.routes.js 
 import taskRoutes from './routes/task.routes.js'
 
-
-
+// Importar el cors
+import cors from "cors";
 
 
 // Inicializar express y almacenar el objeto que nos devuelve en la constante app.
@@ -31,6 +31,11 @@ app.use(express.json());
 
 // Para transformar las cookies en un objeto JSON.
 app.use(cookieParser());
+
+// Utilizar cors, configurarlo de manera que solo el dominio establecido se pueda comunicar
+app.use(cors({
+  origin: 'http://localhost:5173',
+}));
 
 // Que app utilice el authRoutes
 app.use('/api', authRoutes);
