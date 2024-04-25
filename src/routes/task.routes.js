@@ -14,6 +14,12 @@ import {
   deleteTasks
 } from '../controllers/tasks.controller.js'
 
+// Importar el validator.middleware
+import {validateSchema} from '../middlewares/validator.middleware.js'
+
+// Importar el schema de tasks
+import { createTaskSchema } from '../schemas/task.schema.js'
+
 // RUTAS
 // Obtener
 router.get('/tasks', authRequire, getTasks);
@@ -22,7 +28,12 @@ router.get('/tasks', authRequire, getTasks);
 router.get('/tasks/:id', authRequire, getTask);
 
 // Crear
-router.post('/tasks', authRequire, createTasks);
+router.post(
+  '/tasks', 
+  authRequire, // se valida si el usuario esta autenticado
+  validateSchema(createTaskSchema), // se validan los datos
+  createTasks // se crea la tarea
+);
 
 // Actualizar uno solo 
 router.put('/tasks/:id', authRequire, updateTasks);

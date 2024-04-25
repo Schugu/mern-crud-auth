@@ -7,14 +7,20 @@ import { register, login, logout, profile } from '../controllers/auth.controller
 // Importar el authRequiere de validateToken.js
 import { authRequire } from "../middlewares/validateToken.js";
 
+// Importar el middleware validator
+import { validateSchema } from '../middlewares/validator.middleware.js'
+
+// Importar el auth.schema
+import { registerSchema, loginSchema } from '../schemas/auth.schema.js'
+
 // Guardar objeto dado por Router en una const
 const router = Router();
 
 // Crear rutas
 // Cuando se haga una peticion post a: "" , ejecutar la funcion: "". 
-router.post('/register', register);
+router.post('/register', validateSchema(registerSchema), register);
 
-router.post('/login', login);
+router.post('/login', validateSchema(loginSchema), login);
 
 router.post('/logout', logout);
 
