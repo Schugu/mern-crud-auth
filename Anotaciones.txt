@@ -86,3 +86,4 @@
 
 // Archivos
   ./src/api/auth.js : sirve para hacer peticiones al BackEnd.
+  ./src/context/authContext.jsx : Contexto para guardar los datos de autentificacón del usuario.

@@ -13,6 +13,12 @@ export const register = async (req, res) => {
   const { email, password, username } = req.body;
 
   try {
+    // Buscar un usuario que coincida con el email y almacenarlo en uan const.
+    const userFound = await User.findOne({email});
+
+    // Si encuentra un usuario que coincide lanzar un mensaje de error (el correo ya existe).
+    if (userFound) return res.status(400).json(["The email is already in use"]);
+
     // Metodo de bcrypt que transforma un string en una serie de caracteres aleatorios. 
     // Esto va a encriptar la contraseña. El 10 indica cuantas veces se va a ejecutar el algoritmo. 
     const passwordHash = await bcrypt.hash(password, 10);
