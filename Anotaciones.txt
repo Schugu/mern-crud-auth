@@ -19,7 +19,9 @@
       ./routes/auth.routes.js : Sirve para englobar todas las rutas relacionadas con la autentificación.
       ./controllers/auth.controller.js : va a estar relacionado con ./routes/auth.routes.js
       ./libs/jwt.js : Crea un JSON Web Token
-      ./middlewares/validateToken.js : funcion para validar si el usuario ya se autentifico o si puso su correo y su contraseña
+      ./middlewares/validateToken.js : funcion para validar si el usuario ya se autentifico o si puso su correo y su contraseña.
+      ./controllers/tasks.controllers.js : funciones para el tasks.routes.js
+      ./models/task.model.js : modelo de tareas
 
 
 { Anotaciones Importantes }
