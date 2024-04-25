@@ -1,3 +1,4 @@
+------------BackEnd
 // Carpetas
 //  Src 
 //    Routes : Nos servirá para crear las URL del BackEnd (definicion de endpoints o rutas
@@ -66,7 +67,7 @@
   Nos permite validar datos comparandolos con un esquema.
 
 
-
+------------FrontEnd
 
 
 
