@@ -8,8 +8,8 @@ import { registerRequest } from "../api/auth.js";
 import { useAuth } from "../context/authContext.jsx";
 import { useEffect } from "react";
 
-// Importar el useNavigate
-import { useNavigate } from "react-router-dom";
+// Importar el useNavigate y Link
+import { useNavigate, Link } from "react-router-dom";
 
 function RegisterPage() {
   // Registger Sirve para darle requisitos a los inptus
@@ -35,11 +35,11 @@ function RegisterPage() {
     <div className="bg-zinc-800 max-w-md p-10 rounded-md">
       {
         registerErrors.map((error, i) => (
-          <div key={i} className="bg-red-500 p-2 text-white">
+          <div key={i} className="bg-red-500 p-2 text-white my-2">
             {error}
           </div>
         ))
-      } 
+      }
 
       <form onSubmit={onSubmit}>
 
@@ -70,10 +70,12 @@ function RegisterPage() {
           )
         }
 
-
-
         <button type="submit">Register</button>
       </form>
+
+        <p className="flex gap-x-2 justify-between">
+          Already have an account? <Link to="/login" className="text-sky-500">Login</Link>
+        </p>
     </div>
   )
 }
