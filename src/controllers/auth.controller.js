@@ -7,6 +7,12 @@ import bcrypt from 'bcryptjs'
 // Importar la funcion createAccessToken de jwt.js
 import { createAccessToken } from '../libs/jwt.js'
 
+// Importar el JSON WEB TOKEN
+import jwt from 'jsonwebtoken';
+
+// Importar el TOKEN_SECRET
+import { TOKEN_SECRET } from '../config.js';
+
 // Funciones que nos permitan procesar peticiones.
 export const register = async (req, res) => {
   // Extraer datos relevantes
@@ -115,3 +121,31 @@ export const profile = async (req, res) => {
     updatedAt: userFound.updatedAt,
   });
 };
+
+// Peticion que se realiza cada vez que la página cargue
+export const verifyToken = async (req, res) => {
+  // Almacenar el token
+  const {token} = req.cookies;
+
+  // Si no hay token lanzar un mensaje de error.
+  if (!token) return res.status(401).json({ message: 'Unauthorized' });
+
+  // Verificar si el usuario existe
+  jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+    // Si hay un error lanzar un mensaje de error
+    if (err) return res.status(401).json({ message: 'Unauthorized' });
+
+    // Si esta todo bien, buscar al usuario por el id y almacenarlo en una const
+    const userFound = await User.findById(user.id);
+
+    // Si no se encontró al usuario lanzar un mensaje de error
+    if (!userFound) return res.status(401).json({ message: 'Unauthorized' });
+
+    // Si se encontro al usuario devolver un json con sus datos
+    return res.json({
+      id: userFound._id,
+      username: userFound.username,
+      email: userFound.email
+    })
+  });
+}

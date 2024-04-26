@@ -2,7 +2,7 @@
 import { Router } from "express";
 
 // Importar las funciones de auth.controller.js.
-import { register, login, logout, profile } from '../controllers/auth.controller.js';
+import { register, login, logout, profile, verifyToken } from '../controllers/auth.controller.js';
 
 // Importar el authRequiere de validateToken.js
 import { authRequire } from "../middlewares/validateToken.js";
@@ -24,6 +24,9 @@ router.post('/login', validateSchema(loginSchema), login);
 
 router.post('/logout', logout);
 
+router.get('/verify',  verifyToken);
+
 router.get('/profile', authRequire, profile);
+
 
 export default router;

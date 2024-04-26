@@ -35,6 +35,7 @@ app.use(cookieParser());
 // Utilizar cors, configurarlo de manera que solo el dominio establecido se pueda comunicar
 app.use(cors({
   origin: 'http://localhost:5173',
+  credentials: true
 }));
 
 // Que app utilice el authRoutes

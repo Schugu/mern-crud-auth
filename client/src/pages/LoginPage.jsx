@@ -1,7 +1,7 @@
 // Importar el react-hook-form
 import { useForm } from "react-hook-form";
 
-import { useAuth } from "../context/authContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 
 import { Link } from 'react-router-dom'
 

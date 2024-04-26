@@ -2,7 +2,10 @@
 import { createContext, useState, useContext, useEffect } from "react";
 
 // Importar el auth.js
-import { registerRequest, loginRequest } from "../api/auth.js";
+import { registerRequest, loginRequest, verifyTokenRequest } from "../api/auth.js";
+
+// Importar el js-cookie
+import Cookies from "js-cookie";
 
 // Ejecutar el componente y almacenarlo en una const
 export const AuthContext = createContext();
@@ -26,6 +29,7 @@ export const AuthProvider = ({ children }) => {
   // Crear un estado
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Guardar el error en un estado para mostrarlo en pantalla
   const [errors, setErrors] = useState([]);
@@ -45,7 +49,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await loginRequest(user);
       console.log(res);
-      // setIsAuthenticated(true);
+      setIsAuthenticated(true); // Indicar si el usuario esta autentificado o no
+      setUser(res.data); // Guardar los datos del usuario
     } catch (error) {
       // Si es un array devolverlo solamente
       if (Array.isArray(error.response.data)) {
@@ -66,8 +71,51 @@ export const AuthProvider = ({ children }) => {
     }
   }, [errors]);
 
+  // Funcion para validar el token cada vez que se inicia la página o se actualiza.
+  useEffect(() => {
+    // Se hace esta función por que no se puede poner directamente el async/await dentro del useEffect
+    async function checkLogin() {
+      // Si es que hay token almacenarlo en una const
+      const cookies = Cookies.get();
+
+      // Si no hay token, cambiar los estados y retornar
+      if (!cookies.token) {
+        setIsAuthenticated(false);
+        setLoading(false);
+        return setUser(null);
+      }
+
+      // Si hay token, hacer toda la validación
+      try {
+        // Si hay un token verificarlo y almacenar la respuesta en un res
+        // Se hace esta verificación por que el token se puede establecer manualmente en el navegador.
+        const res = await verifyTokenRequest(cookies.token);
+
+        // Si no hay respuesta, cambiar los estados y retornar.
+        if (!res.data) {
+          setIsAuthenticated(false);
+          setLoading(false);
+          return;
+        }
+
+        // Si hay una respuesta, realizar lo siguiente.
+        setIsAuthenticated(true);
+        setUser(res.data)
+        setLoading(false);
+
+      } catch (error) {
+        setIsAuthenticated(false);
+        setUser(null);
+        setLoading(false);
+      }
+
+    }
+    checkLogin();
+  }, []);
+
+
   return (
-    <AuthContext.Provider value={{ signUp, signIn, user, isAuthenticated, errors }}>
+    <AuthContext.Provider value={{ signUp, signIn, user, isAuthenticated, errors, loading }}>
       {children}
     </AuthContext.Provider>
   )

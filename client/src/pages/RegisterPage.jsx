@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { registerRequest } from "../api/auth.js";
 
 // Improtar el useAuth
-import { useAuth } from "../context/authContext.jsx";
+import { useAuth } from "../context/AuthContext.jsx";
 import { useEffect } from "react";
 
 // Importar el useNavigate y Link

@@ -83,7 +83,11 @@
 { axios }
   Biblioteca que utiliza fetch.
 
+{ js-cookie }
+  Nos sirve para leer las cookies.
+
 
 // Archivos
   ./src/api/auth.js : sirve para hacer peticiones al BackEnd.
   ./src/context/authContext.jsx : Contexto para guardar los datos de autentificacón del usuario.
+  ./src/api/axios.js : archivo de configuracion de axios.
