@@ -86,6 +86,9 @@
 { js-cookie }
   Nos sirve para leer las cookies.
 
+{ dayjs }
+  Toma una fecha y la cambia en distintos formatos.
+
 
 // Archivos
   ./src/api/auth.js : sirve para hacer peticiones al BackEnd.

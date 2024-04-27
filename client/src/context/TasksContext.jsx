@@ -5,7 +5,7 @@ import {
   getTasksRequest,
   deleteTasksRequest,
   getTaskRequest,
-  updateTasksRequest
+  updateTaskRequest
 } from "../api/tasks.js";
 
 const TaskContext = createContext();
@@ -31,7 +31,7 @@ export function TaskProvider({ children }) {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   const createTask = async (task) => {
     const res = await createTasksRequest(task);
@@ -57,13 +57,13 @@ export function TaskProvider({ children }) {
       const res = await getTaskRequest(id);
       return res.data;
     } catch (error) {
-      console.log * (error);
+      console.log(error);
     }
-  }
+  };
 
   const updateTask = async (id, task) => {
     try {
-      await updateTasksRequest(id, task);
+      await updateTaskRequest(id, task);
     } catch (error) {
       console.log(error);
     }

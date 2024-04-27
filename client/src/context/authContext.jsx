@@ -37,14 +37,15 @@ export const AuthProvider = ({ children }) => {
   const signUp = async (user) => {
     try {
       const res = await registerRequest(user);
-      console.log(res.data);
-      setIsAuthenticated(true);
+      if (res.status === 200) {
+        setUser(res.data);
+        setIsAuthenticated(true);
+      }
     } catch (error) {
       console.log(error.response.data);
       setErrors(error.response.data);
     }
   }
-
   const signIn = async (user) => {
     try {
       const res = await loginRequest(user);
