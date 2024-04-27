@@ -91,3 +91,4 @@
   ./src/api/auth.js : sirve para hacer peticiones al BackEnd.
   ./src/context/authContext.jsx : Contexto para guardar los datos de autentificacón del usuario.
   ./src/api/axios.js : archivo de configuracion de axios.
+  ./src/api/tasks.js : peticiones sobre tasks al backend
