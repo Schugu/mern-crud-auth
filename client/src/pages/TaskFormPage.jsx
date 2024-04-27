@@ -1,14 +1,36 @@
 import { useForm } from "react-hook-form";
 import { useTasks } from "../context/TasksContext";
-import { useNavigate } from "react-router-dom";
+// El useParams sirve para que podamos obtener un objeto con los datos dinamicos que van en la URL.
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 function TaskFormPage() {
-  const { register, handleSubmit } = useForm();
-  const { createTask } = useTasks();
+  const { register, handleSubmit, setValue } = useForm();
+  const { createTask, getTask, updateTask } = useTasks();
   const navigate = useNavigate();
+  const params = useParams();
+
+  useEffect(() => {
+    async function loadTask() {
+      if (params.id) {
+        const task = await getTask(params.id);
+        console.log(task); // borrar desp
+        setValue('title', task.title);
+        setValue('description', task.description);
+      }
+    }
+    loadTask();
+  }, []);
+
 
   const onSubmit = handleSubmit((data) => {
-    createTask(data);
+    // Modo edición
+    if (params.id) {
+      updateTask(params.id, data);
+    } else {
+      // Modo creación
+      createTask(data);
+    }
     navigate('/tasks');
   });
 
