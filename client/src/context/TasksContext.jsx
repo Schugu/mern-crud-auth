@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react"
 
-import { createTasksRequest, getTasksRequest } from "../api/tasks.js";
+import { createTasksRequest, getTasksRequest, deleteTasksRequest } from "../api/tasks.js";
 
 const TaskContext = createContext();
 
@@ -30,7 +30,22 @@ export function TaskProvider({ children }) {
   const createTask = async (task) => {
     const res = await createTasksRequest(task);
     console.log(res);
+  };
+
+  const deleteTask = async (id) => {
+    try {
+      const res = await deleteTasksRequest(id);
+      if (res.status === 204) {
+        // Crea un arreglo nuevo sin la tarea que acabamos de eliminar
+        setTasks(tasks.filter(task => task._id !== id));
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+
   }
+
 
 
   return (
@@ -38,6 +53,7 @@ export function TaskProvider({ children }) {
       tasks,
       createTask,
       getTasks,
+      deleteTask,
     }}>
       {children}
     </TaskContext.Provider>
