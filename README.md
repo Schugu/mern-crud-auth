@@ -79,6 +79,76 @@ Para personalizar y comprender el proyecto, sigue estas instrucciones:
 - **Front end**: Si deseas modificar o entender cómo funciona el front end, te recomiendo revisar los archivos y carpetas dentro de `src`. La lógica de la aplicación se encuentra principalmente en los archivos `App.jsx` y `Main.jsx`, mientras que los componentes individuales se encuentran en la carpeta `src/components`.
 
 
+
+# Mis anotaciones
+## Backend 
+### Estructura de Carpetas y Archivos del Backend
+
+**Carpetas:**
+
+- **Src/Routes**: Definición de endpoints o rutas que el Frontend puede solicitar.
+- **Src/Controllers**: Funciones que se ejecutan al visitar una URL.
+- **Src/Models**: Modelos de datos de la base de datos, donde se crean esquemas.
+- **Src/Middlewares**: Funciones para proteger rutas, especialmente para usuarios autenticados.
+- **Src/Schemas**: Esquemas para validar datos.
+- **Src/Libs**: Código reutilizable que se puede importar varias veces.
+
+**Archivos:**
+
+- **App.js**: Configuración de Express del Backend.
+- **Db.js**: Configuración de la base de datos.
+- **Config.js**: Archivo para crear configuraciones que otros archivos puedan importar.
+- **Index.js**: Punto de entrada de la aplicación.
+- **./Models/User.model.js**: Especificación de los datos que se guardarán en MongoDB.
+- **./Routes/Auth.routes.js**: Rutas relacionadas con la autenticación.
+- **./Controllers/Auth.controller.js**: Funciones relacionadas con la autenticación.
+- **./Libs/Jwt.js**: Genera un JSON Web Token.
+- **./Middlewares/ValidateToken.js**: Función para validar si el usuario está autenticado.
+- **./Controllers/Tasks.controllers.js**: Funciones para manejar las tareas.
+- **./Models/Task.model.js**: Modelo para las tareas.
+- **./Schemas/Auth.schemas.js**: Esquema para la autenticación.
+- **./Middlewares/ValidatorMiddleware.js**: Middleware para validar con los esquemas.
+- **./Schemas/Task.schema.js**: Esquema para las tareas.
+
+### Anotaciones Importantes
+
+1. Al importar archivos que creamos, debemos incluir la extensión (.js).
+2. Para evitar mezclar las rutas del Frontend y del Backend, se debe agregar '/api' a las rutas del Backend en App.js.
+3. Los middlewares son funciones que se ejecutan antes de llegar a una ruta.
+
+### Módulos Utilizados
+
+- **Nodemon**: Para automatizar la reinicialización del servidor durante el desarrollo.
+- **Morgan**: Para registrar las peticiones que llegan al Backend en la consola.
+- **Mongoose**: Para conectarse y modelar los datos en MongoDB.
+- **Dotenv**: Para importar variables de entorno de un archivo .env.
+- **Bcryptjs**: Para encriptar contraseñas.
+- **JsonWebToken**: Para crear tokens de sesión.
+- **Cookie-parser**: Para convertir cookies en objetos JSON.
+- **Zod**: Para validar datos comparándolos con un esquema.
+- **Cors**: Para configurar CORS fácilmente.
+
+
+## Frontend
+### Anotaciones Importantes
+
+1. Para evitar errores de CORS, se debe instalar un módulo en el Backend.
+
+### Módulos Utilizados
+
+- **React-router-dom**: Para crear y gestionar las rutas.
+- **React-hook-form**: Para validar datos de formularios y manejar cambios de estado.
+- **Axios**: Biblioteca para realizar peticiones HTTP.
+- **Js-cookie**: Para leer cookies.
+- **Dayjs**: Para manipular fechas en distintos formatos.
+
+### Archivos
+
+- **./Src/Api/auth.js**: Para realizar peticiones al Backend relacionadas con la autenticación.
+- **./Src/Context/AuthContext.jsx**: Contexto para almacenar datos de autenticación del usuario.
+- **./Src/Api/axios.js**: Archivo de configuración para Axios.
+- **./Src/Api/tasks.js**: Para realizar peticiones al Backend relacionadas con las tareas.
+
 ### Capturas de pantalla 📸
 
 
