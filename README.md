@@ -150,10 +150,10 @@ Para personalizar y comprender el proyecto, sigue estas instrucciones:
 - **./Src/Api/tasks.js**: Para realizar peticiones al Backend relacionadas con las tareas.
 
 ### Capturas de pantalla 📸
-<img src='public/CapturaDePantalla1.png' alt='GifDePantalla1'>
-<img src='public/CapturaDePantalla2.png' alt='GifDePantalla2'>
-<img src='public/CapturaDePantalla3.png' alt='GifDePantalla3'>
-<img src='public/CapturaDePantalla4.png' alt='GifDePantalla4'>
+<img src='public/CapturaDePantalla1.png' alt='CapturaDePantalla1'>
+<img src='public/CapturaDePantalla2.png' alt='CapturaDePantalla2'>
+<img src='public/CapturaDePantalla3.png' alt='CapturaDePantalla3'>
+<img src='public/CapturaDePantalla4.png' alt='CapturaDePantalla4'>
 
 
 
