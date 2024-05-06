@@ -1,6 +1,6 @@
 <h1 align='center'>🌟 TaskManager con Login, CRUD y MongoDB 🔐🔄📊🌟</h1>
 
-> Práctica de HTML, CSS, JavaScript, React, Node.js, Express y MongoDB. ✨
+> Práctica de HTML, CSS, JavaScript, React, Node.js, Express, MongoDB y Tailwind. ✨
 
 🎯 Objetivo: Desarrollar una aplicación de gestión de tareas con sistema de usuarios, CRUD y base de datos en MongoDB.
 
