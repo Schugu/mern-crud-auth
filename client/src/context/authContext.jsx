@@ -46,6 +46,7 @@ export const AuthProvider = ({ children }) => {
       setErrors(error.response.data);
     }
   }
+
   const signIn = async (user) => {
     try {
       const res = await loginRequest(user);
@@ -61,7 +62,7 @@ export const AuthProvider = ({ children }) => {
       setErrors([error.response.data.message]);
     }
   }
-
+  
   // Función para cerrar sesión 
   const logout = () => {
     Cookies.remove('token');

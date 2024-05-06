@@ -49,7 +49,6 @@ export function TaskProvider({ children }) {
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const getTask = async (id) => {
