@@ -1,4 +1,4 @@
-<h1 align='center'>🌟 TaskManager con Login, CRUD y MongoDB 🔐🔄📊🌟</h1>
+<h1 align='center'>🌟 TaskManager 🔐🔄📊🌟</h1>
 
 > Práctica de HTML, CSS, JavaScript, React, Node.js, Express, MongoDB y Tailwind. ✨
 
